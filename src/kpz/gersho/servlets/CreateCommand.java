@@ -17,16 +17,20 @@ import kpz.gersho.beans.Command;
 public class CreateCommand extends HttpServlet {
 	
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		
-		/*
-		 * Check for empty parameters in the form
-		 *    
-		 *  */
+        
+		Double montant;
+		try {
+            /* Récupération du montant */
+            montant = Double.parseDouble( request.getParameter( "montantCommande" ) );
+        } catch ( NumberFormatException e ) {
+
+            montant = null;
+        }
 		Boolean incompleteForm = false;
 		if( request.getParameter("nomClient").isEmpty() ||
 			request.getParameter("adresseClient").isEmpty() ||
 			request.getParameter("telephoneClient").isEmpty() ||
-			request.getParameter("montantCommande").isEmpty() ||
+			montant == null ||
 			request.getParameter("modePaiementCommande").isEmpty() || 
 			request.getParameter("modeLivraisonCommande").isEmpty()
 												
@@ -48,7 +52,7 @@ public class CreateCommand extends HttpServlet {
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MM-yyyy");
 		String date = fmt.print(dt);
 		commande.setDate(date);
-		commande.setMontant(Double.parseDouble(request.getParameter("montantCommande")));
+		commande.setMontant(montant);
 		commande.setModePaiement(request.getParameter("modePaiementCommande"));
 		commande.setStatusPaiement(request.getParameter("statutPaiementCommande"));
 		commande.setModeLivraison(request.getParameter("modeLivraisonCommande"));

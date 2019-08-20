@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<p> ${ incompleteForm ? '<p>Vous n\'avez pas remplis tout les champs, <a href ="/TPFilRouge/creerCommande.jsp">Cliquez ici</a> pour recommencer</p>' : '' } </p>
+<p> ${ incompleteForm ? '<p>Vous n\'avez pas remplis tout les champs, <a href ="/TPFilRouge/creerCommande.jsp">Cliquez ici</a> pour recommencer</p>' : '<p>Création réussie</p>' } </p>
 
 <p>Nom: ${ commande.client.nom  }</p>
 <p>Prenom: ${ commande.client.prenom  }</p>
