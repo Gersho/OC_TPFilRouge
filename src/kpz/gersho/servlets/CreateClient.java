@@ -15,9 +15,7 @@ public class CreateClient extends HttpServlet {
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		Boolean incompleteForm = false;
 		if( request.getParameter("nomClient").isEmpty() ||
-			request.getParameter("prenomClient").isEmpty() ||
 			request.getParameter("adresseClient").isEmpty() ||
-			request.getParameter("emailClient").isEmpty() ||
 			request.getParameter("telephoneClient").isEmpty()){
 				incompleteForm = true;
 		}

@@ -24,15 +24,11 @@ public class CreateCommand extends HttpServlet {
 		 *  */
 		Boolean incompleteForm = false;
 		if( request.getParameter("nomClient").isEmpty() ||
-			request.getParameter("prenomClient").isEmpty() ||
 			request.getParameter("adresseClient").isEmpty() ||
-			request.getParameter("emailClient").isEmpty() ||
 			request.getParameter("telephoneClient").isEmpty() ||
 			request.getParameter("montantCommande").isEmpty() ||
 			request.getParameter("modePaiementCommande").isEmpty() || 
-			request.getParameter("statutPaiementCommande").isEmpty() ||
-			request.getParameter("modeLivraisonCommande").isEmpty() ||
-			request.getParameter("statutLivraisonCommande").isEmpty()
+			request.getParameter("modeLivraisonCommande").isEmpty()
 												
 				){
 			incompleteForm = true;
