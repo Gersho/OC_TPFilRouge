@@ -4,12 +4,12 @@
     <head>
         <meta charset="utf-8" />
         <title>Création d'une commande</title>
-        <link type="text/css" rel="stylesheet" href="inc/style.css" />
+        <link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css"/>" />
     </head>
     <body>
     		<jsp:include page="/inc/inc_menu.jsp" />  
         <div>
-            <form method="get" action="creationCommande">
+            <form method="get" action="<c:url value="/creationCommande"/>">
  
 		<jsp:include page="/inc/inc_client_form.jsp" />
                 <fieldset>
