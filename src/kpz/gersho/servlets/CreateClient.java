@@ -11,25 +11,32 @@ import kpz.gersho.beans.Client;
 
 public class CreateClient extends HttpServlet {
 
-	
-	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+	public static final String PARAM_nomClient = "nomClient";
+	public static final String PARAM_prenomClient = "prenomClient";
+	public static final String PARAM_adresseClient = "adresseClient";
+	public static final String PARAM_emailClient = "emailClient";
+	public static final String PARAM_telephoneClient = "telephoneClient";
+	public static final String ATT_client = "client";
+	public static final String ATT_incompleteForm = "incompleteForm";
+	public static final String URL_confirmClient = "/WEB-INF/confirmClient.jsp";
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Boolean incompleteForm = false;
-		if( request.getParameter("nomClient").isEmpty() ||
-			request.getParameter("adresseClient").isEmpty() ||
-			request.getParameter("telephoneClient").isEmpty()){
-				incompleteForm = true;
+		if (request.getParameter(PARAM_nomClient).isEmpty() || request.getParameter(PARAM_adresseClient).isEmpty()
+				|| request.getParameter(PARAM_telephoneClient).isEmpty()) {
+			incompleteForm = true;
 		}
-		
+
 		Client client = new Client();
-		client.setNom(request.getParameter("nomClient"));
-		client.setPrenom(request.getParameter("prenomClient"));
-		client.setAdresse(request.getParameter("adresseClient"));
-		client.setEmail(request.getParameter("emailClient"));
-		client.setTelephone(request.getParameter("telephoneClient"));
-		
-		request.setAttribute("client", client);
-		request.setAttribute("incompleteForm", incompleteForm);
-		
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/confirmClient.jsp" ).forward( request, response );
+		client.setNom(request.getParameter(PARAM_nomClient));
+		client.setPrenom(request.getParameter(PARAM_prenomClient));
+		client.setAdresse(request.getParameter(PARAM_adresseClient));
+		client.setEmail(request.getParameter(PARAM_emailClient));
+		client.setTelephone(request.getParameter(PARAM_telephoneClient));
+
+		request.setAttribute(ATT_client, client);
+		request.setAttribute(ATT_incompleteForm, incompleteForm);
+
+		this.getServletContext().getRequestDispatcher(URL_confirmClient).forward(request, response);
 	}
 }

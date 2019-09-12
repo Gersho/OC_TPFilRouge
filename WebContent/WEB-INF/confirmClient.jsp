@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,15 +7,41 @@
 <title>Confirmation création client</title>
 </head>
 <body>
+<jsp:include page="/inc/inc_menu.jsp" />  
 
-<p> ${ incompleteForm ? '<p>Vous n\'avez pas remplis tout les champs, <a href ="/TPFilRouge/creerClient.jsp">Cliquez ici</a> pour recommencer</p>' : '<p>Création réussie</p>' } </p>
+	<p>
+		<c:choose>
+			<c:when test="${ incompleteForm }">
+		 Vous n'avez pas remplis tout les champs, <a
+					href="<c:url value="/creerClient.jsp" />">Cliquez ici</a> pour recommencer.
+		</c:when>
+			<c:otherwise>
+		Création réussie.<br />
+				<p>
+					Nom:
+					<c:out value="${ client.nom  }"></c:out>
+				</p>
+				<p>
+					Prenom:
+					<c:out value="${ client.prenom  }"></c:out>
+				</p>
+				<p>
+					Adresse:
+					<c:out value="${ client.adresse  }"></c:out>
+				</p>
+				<p>
+					Telephone:
+					<c:out value="${ client.telephone  }"></c:out>
+				</p>
+				<p>
+					Email:
+					<c:out value="${ client.email  }"></c:out>
+				</p>
 
-<p>Nom: ${ client.nom  }</p>
-<p>Prenom: ${ client.prenom  }</p>
-<p>Adresse: ${ client.adresse  }</p>
-<p>Telephone: ${ client.telephone  }</p>
-<p>Email: ${ client.email  }</p>
 
+			</c:otherwise>
+		</c:choose>
+	</p>
 
 </body>
 </html>

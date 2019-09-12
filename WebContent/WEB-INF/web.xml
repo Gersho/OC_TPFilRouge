@@ -4,6 +4,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
   version="3.0">
+ 
+ 
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config> 
+ 
   
   <servlet>
 	<servlet-name>CreateClient</servlet-name>
@@ -27,5 +36,6 @@
 	<servlet-name>CreateCommand</servlet-name>
 	<url-pattern>/creationCommande</url-pattern>
 </servlet-mapping>
+
 
 </web-app>
